@@ -20,10 +20,10 @@ function(input, output, session) {
     "Percent of adults with a bachelor degree or higher",
     "Number of households living in the same house as last year",
     "Percent of households living in the same house as last year",
-    "Median value of owner occupied hosuing units",
-    "Number of vacant hosuing units",
+    "Median value of owner occupied housing units",
+    "Number of vacant housing units",
     "Percent of housing units vacant",
-    "Number of hosuing units without a full kitchen",
+    "Number of housing units without a full kitchen",
     "Percent of housing units without a full kitchen",
     "Percent turnout in 2016 general election",
     "Median age",
@@ -95,13 +95,13 @@ function(input, output, session) {
   output$histIndep <- renderPlot({
     hist(inputs[, which(names(inputs) == input$indep)],
          xlab = names[which(names(inputs) == input$indep)],
-         main = "")
+         main = "Independent Variable")
   })
   
   output$histDep <- renderPlot({
     hist(inputs[, which(names(inputs) == input$dep)],
          xlab = names[which(names(inputs) == input$dep)],
-         main = ""
+         main = "Dependent Variable"
     )
   })
   
@@ -187,7 +187,6 @@ function(input, output, session) {
       
       confintText <- "The input value is outside the scope of the model. It would be improper to extrapolate. "
       
-      
     }
     
     
@@ -213,10 +212,7 @@ function(input, output, session) {
                 confintText,
                 '<br/><br/>',
                 corText))
-    
-    
-    
-    
+
   })
   
   
@@ -238,9 +234,5 @@ function(input, output, session) {
       showCountyPopup(event$id, event$lat, event$lng)
     })
   })
-  
-  
-  
-  
   
 }
