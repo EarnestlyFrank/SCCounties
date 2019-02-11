@@ -33,7 +33,6 @@ function(input, output, session) {
   
   colnames(inputs) <- names
   
-  
   County <- readOGR("SC/SC_County.shp",
                     layer = "SC_County",
                     GDAL1_integer64_policy = TRUE)
@@ -125,9 +124,10 @@ function(input, output, session) {
     results <- anova(model)
     
     sumText <- paste(
-      "<br>The independent variable has a median of ", median(indeps), ", a mean of ", signif(mean(indeps),4), ", and a standard deviation of ", signif(sd(indeps),4), "<br/>",
-      "<br>The dependent variable has a median of ", median(deps), ", a mean of ", signif(mean(deps),4), ", and a standard deviation of ", signif(sd(deps),4), "<br/>", sep = ""
-    )
+      "<br>The independent variable has a median of ", median(indeps), 
+      ", a mean of ", signif(mean(indeps),4), ", and a standard deviation of ", signif(sd(indeps),4), "<br/>",
+      "<br>The dependent variable has a median of ", median(deps), ", a mean of ", 
+      signif(mean(deps),4), ", and a standard deviation of ", signif(sd(deps),4), "<br/>", sep = "")
     
     if (results$`Pr(>F)`[1] < 0.05) {
       conclude <- paste(
@@ -135,9 +135,11 @@ function(input, output, session) {
         tolower(input$indep),
         " is connected to ",
         tolower(input$dep),
-        ". The equation is as follows: <br/>y = ", signif(as.numeric(model$coefficients[1]), 4), " + ", signif(as.numeric(model$coefficients[2]), 4), "x.<br/>", 
+        ". The equation is as follows: <br/>y = ", signif(as.numeric(model$coefficients[1]), 4),
+        " + ", signif(as.numeric(model$coefficients[2]), 4), "x.<br/>", 
         "This means that for every increase of 1 unit in ", tolower(input$indep), 
-        " there is a change of ", signif(as.numeric(model$coefficients[2]), 4), " +/- ", signif(as.numeric(summary(model)$coefficients[4]), 4), " units in ", tolower(input$dep), ". ",
+        " there is a change of ", signif(as.numeric(model$coefficients[2]), 4), 
+        " +/- ", signif(as.numeric(summary(model)$coefficients[4]), 4), " units in ", tolower(input$dep), ". ",
         sep = ""
       )
     }

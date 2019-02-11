@@ -5,8 +5,8 @@ account: frankwebb
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 317548
-bundleId: 1333902
+bundleId: 1347734
 url: https://frankwebb.shinyapps.io/SCCounties/
-when: 1524504654.73914
+when: 1525112478.27189
 asMultiple: FALSE
 asStatic: FALSE
